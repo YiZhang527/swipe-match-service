@@ -44,7 +44,8 @@ def put_swipe(swiper_id, swipee_id, direction, now):
 
 def has_right_swiped(swiper_id, swipee_id):
     resp = _resource().Table(_swipes_table_name()).get_item(
-        Key={"swiper_id": swiper_id, "swipee_id": swipee_id}
+        Key={"swiper_id": swiper_id, "swipee_id": swipee_id},
+        ConsistentRead=True,
     )
     item = resp.get("Item")
     return item is not None and item["direction"] == "right"
