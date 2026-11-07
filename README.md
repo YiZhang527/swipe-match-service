@@ -26,3 +26,25 @@ cp terraform/terraform.tfvars.example terraform/terraform.tfvars   # fill in IP 
 curl http://<public_ip>/health
 ./scripts/tf.sh destroy
 ```
+
+## Demo
+
+Deployed to AWS EC2 with Terraform and verified end to end, then torn down with `terraform destroy`.
+
+Mutual right swipes create a match; both users see each other in their match list:
+
+![Live API test](docs/terminal-test.png)
+
+Health check and match lookup served through Nginx on EC2:
+
+![Health check](docs/health.png)
+
+![Matches endpoint](docs/matches-api.png)
+
+Match records stored in DynamoDB, one item per user, written in a single transaction:
+
+![DynamoDB matches table](docs/dynamodb.png)
+
+Tests run automatically in GitHub Actions on every push:
+
+![GitHub Actions CI](docs/ci.png)
