@@ -1,0 +1,2 @@
+my_ip_cidr = "1.2.3.4/32"
+repo_url   = "https://github.com/<your-username>/swipe-match-service.git"
